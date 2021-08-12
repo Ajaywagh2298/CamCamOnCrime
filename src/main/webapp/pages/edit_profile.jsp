@@ -13,7 +13,7 @@
                 <form style="padding-right:10px; " action="${pageContext.request.contextPath}/EditServlet" method="post">
                     <div hidden class="col-md-4 pl-1">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="oid" value="<%=officer.getId()%>">
+                            <input type="hidden" class="form-control" name="oid" value="<%=officer.getId()%>">
                         </div>
                     </div>
                     <div class="row">
