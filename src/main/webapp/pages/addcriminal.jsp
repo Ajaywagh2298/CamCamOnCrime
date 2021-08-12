@@ -37,6 +37,9 @@
                           <div class="form-group"><label class="form-control-label">Identity Marks:</label><br>
                             <input type="text" name="identityMark" class="form-control">
                           </div>
+                          <div class="form-group"><label class="form-control-label">Crime Detials:</label><br>
+                            <textarea class="form-control" name="crime" ></textarea>
+                          </div>
                           <div class="form-group"><input type="submit"  value="Upload" class="btn btn-success">
                           </div>
                         </div>
