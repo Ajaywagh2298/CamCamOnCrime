@@ -12,12 +12,15 @@ public class Criminal {
     String gender;
     String aadharId;
     String identityMark;
+    String crimeDetails;
+
+
 
     public Criminal() {
 
     }
 
-    public Criminal(int cId, String name, String address, String contact, InputStream photo, String birthDate, String gender, String aadharId, String identityMark) {
+    public Criminal(int cId, String name, String address, String contact, InputStream photo, String birthDate, String gender, String aadharId, String identityMark,String crimeDetails ) {
         this.cId = cId;
         this.name = name;
         this.address = address;
@@ -27,10 +30,11 @@ public class Criminal {
         this.gender = gender;
         this.aadharId = aadharId;
         this.identityMark = identityMark;
+        this.crimeDetails = crimeDetails;
 
     }
 
-    public Criminal(String name, String address, String contact, InputStream photo, String birthDate, String gender, String aadharId, String identityMark) {
+    public Criminal(String name, String address, String contact, InputStream photo, String birthDate, String gender, String aadharId, String identityMark,String crimeDetails) {
         this.name = name;
         this.address = address;
         this.contact = contact;
@@ -39,6 +43,7 @@ public class Criminal {
         this.gender = gender;
         this.aadharId = aadharId;
         this.identityMark = identityMark;
+        this.crimeDetails = crimeDetails;
 
     }
 
@@ -113,6 +118,13 @@ public class Criminal {
     public void setIdentityMark(String identityMark) {
         this.identityMark = identityMark;
     }
+    public String getCrimeDetails() {
+        return crimeDetails;
+    }
+
+    public void setCrimeDetails(String crimeDetails) {
+        this.crimeDetails = crimeDetails;
+    }
 
     @Override
     public String toString() {
@@ -126,6 +138,7 @@ public class Criminal {
                 ", gender='" + gender + '\'' +
                 ", aadharId='" + aadharId + '\'' +
                 ", identityMark='" + identityMark + '\'' +
+                ", crimeDetails='" + crimeDetails + '\'' +
                 '}';
     }
 }

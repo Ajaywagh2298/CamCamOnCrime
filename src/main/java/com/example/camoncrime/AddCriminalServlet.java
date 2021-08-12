@@ -27,12 +27,13 @@ public class AddCriminalServlet extends HttpServlet {
             String gender = request.getParameter("gender");
             String adharId = request.getParameter("adharId");
             String identityMark = request.getParameter("identityMark");
+            String crimeDetails = request.getParameter("crime");
 
             Part file = request.getPart("photo");
             photo = file.getInputStream();
 
             //make user object
-            Criminal criminalModel = new Criminal(name, address, contact, photo, birthDate, gender, adharId, identityMark);
+            Criminal criminalModel = new Criminal(name, address, contact, photo, birthDate, gender, adharId, identityMark,crimeDetails);
 
             System.out.println(criminalModel);
             //create a database model
@@ -43,7 +44,7 @@ public class AddCriminalServlet extends HttpServlet {
                 String errorMessage = "Record already registered";
                 HttpSession regSession = request.getSession();
                 regSession.setAttribute("RegError", errorMessage);
-                response.sendRedirect("pages/register.jsp");
+                response.sendRedirect("pages/addcriminal.jsp");
             }
         } catch (Exception e) {
             e.printStackTrace();

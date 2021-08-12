@@ -16,7 +16,7 @@ public class CriminalDatabase {
     public boolean saveCriminal(Criminal criminal) {
         boolean set = false;
         try {
-            String query = "insert into criminal_t(name, address, contact, photo, birth_date, gender, adhar_id,identity_mark) values(?,?,?,?,?,?,?,?)";
+            String query = "insert into criminal_t(name, address, contact, photo, birth_date, gender, adhar_id,identity_mark,crimeDetails) values(?,?,?,?,?,?,?,?,?)";
 
             updateCriminal(criminal, query);
             set = true;
@@ -29,7 +29,7 @@ public class CriminalDatabase {
 
     public boolean editCriminal(Criminal criminal) {
         try {
-            String query = "update criminal_t set name=?, address=?, contact=?, photo=?,birth_date=?,gender=?,adhar_id=?,identity_mark=? where adhar_id=?";
+            String query = "update criminal_t set name=?, address=?, contact=?, photo=?,birth_date=?,gender=?,adhar_id=?,identity_mark=?,crimeDetails=? where adhar_id=?";
             updateCriminal(criminal, query);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -48,6 +48,7 @@ public class CriminalDatabase {
         pt.setString(6, criminal.getGender());
         pt.setString(7, criminal.getAadharId());
         pt.setString(8, criminal.getIdentityMark());
+        pt.setString(9, criminal.getCrimeDetails());
 
         pt.executeUpdate();
     }
