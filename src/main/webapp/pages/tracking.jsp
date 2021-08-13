@@ -57,9 +57,9 @@
             <video id="video" height="500" width="500" autoplay muted></video>
           </div>
           <div class="result-container">
-            <div id="gender">Gender</div>
+         <!--   <div id="gender">Gender</div>
             <div id="age">Age</div>
-            <div id="emotion">Emotion</div>
+            <div id="emotion">Emotion</div> -->
           </div>
         </div>
       </div>

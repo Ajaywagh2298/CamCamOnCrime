@@ -42,17 +42,18 @@ video.addEventListener("playing", () => {
 
     setInterval(async () => {
         const detections = await faceapi
-            .detectSingleFace(video, new faceapi.TinyFaceDetectorOptions())
-            .withFaceLandmarks()
-            .withAgeAndGender()
-            .withFaceExpressions();
+            //.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions())
+            .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+           //.withFaceLandmarks()
+           // .withAgeAndGender()
+            //.withFaceExpressions();
 
         const resizedDetections = faceapi.resizeResults(detections, displaySize);
         canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 
         /****Drawing the detection box and landmarks on canvas****/
-        faceapi.draw.drawDetections(canvas, resizedDetections);
-        faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+       faceapi.draw.drawDetections(canvas, resizedDetections);
+       faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
 
         /****Setting values to the DOM****/
         if (resizedDetections && Object.keys(resizedDetections).length > 0) {
