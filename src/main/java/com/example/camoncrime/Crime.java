@@ -4,6 +4,7 @@ import java.io.InputStream;
 public class Crime {
     int crimeID;
     String caseNumber;
+    String caseName;
     String crimeType;
     String date;
     String time;
@@ -21,9 +22,10 @@ public class Crime {
 
     }
 
-    public  Crime(int crimeID,String caseNumber,String crimeType,String date,String time,String crimeDetails,String suspectivePersonName,String address,String witness,InputStream crimePhoto1,InputStream crimePhoto2,InputStream crimePhoto3,InputStream crimePhoto4,InputStream crimeVideo){
+    public  Crime(int crimeID,String caseNumber, String caseName, String crimeType,String date,String time,String crimeDetails,String suspectivePersonName,String address,String witness,InputStream crimePhoto1,InputStream crimePhoto2,InputStream crimePhoto3,InputStream crimePhoto4,InputStream crimeVideo){
       this.crimeID = crimeID;
       this.caseNumber = caseNumber;
+      this.caseName = caseName;
       this.crimeType = crimeType;
       this.date = date;
       this.time = time;
@@ -38,8 +40,9 @@ public class Crime {
       this.crimeVideo = crimeVideo;
     }
 
-    public  Crime(String caseNumber,String crimeType,String date,String time,String crimeDetails,String suspectivePersonName,String address,String witness,InputStream crimePhoto1,InputStream crimePhoto2,InputStream crimePhoto3,InputStream crimePhoto4,InputStream crimeVideo){
+    public  Crime(String caseNumber,String caseName,String crimeType,String date,String time,String crimeDetails,String suspectivePersonName,String address,String witness,InputStream crimePhoto1,InputStream crimePhoto2,InputStream crimePhoto3,InputStream crimePhoto4,InputStream crimeVideo){
         this.caseNumber = caseNumber;
+        this.caseName = caseName;
         this.crimeType = crimeType;
         this.date = date;
         this.time = time;
@@ -67,6 +70,14 @@ public class Crime {
 
     public void setCaseNumber(String caseNumber) {
         this.caseNumber = caseNumber;
+    }
+
+    public String getCaseName() {
+        return caseName;
+    }
+
+    public void setCaseName(String caseName) {
+        this.caseName = caseName;
     }
 
     public String getCrimeType() {
@@ -165,6 +176,24 @@ public class Crime {
         this.witness = witness;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Crime{" +
+                "crimeID=" + crimeID +
+                ", caseNumber='" + caseNumber + '\'' +
+                ", caseName='" + caseName + '\'' +
+                ", crimeType='" + crimeType + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", crimeDetails='" + crimeDetails + '\'' +
+                ", suspectivePersonName='" + suspectivePersonName + '\'' +
+                ", address='" + address + '\'' +
+                ", witness='" + witness + '\'' +
+                ", crimePhoto1=" + crimePhoto1 +
+                ", crimePhoto2=" + crimePhoto2 +
+                ", crimePhoto3=" + crimePhoto3 +
+                ", crimePhoto4=" + crimePhoto4 +
+                ", crimeVideo=" + crimeVideo +
+                '}';
+    }
 }
