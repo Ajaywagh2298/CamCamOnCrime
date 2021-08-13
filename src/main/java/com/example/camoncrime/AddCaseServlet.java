@@ -4,7 +4,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.InputStream;
 
 @MultipartConfig
 @WebServlet(name = "AddCaseServlet", urlPatterns = {"/AddCaseServlet"})
@@ -16,11 +15,11 @@ public class AddCaseServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        InputStream crimePhoto1 = null;
-        InputStream crimePhoto2 = null;
-        InputStream crimePhoto3 = null;
-        InputStream crimePhoto4 = null;
-        InputStream crimeVideo = null;
+        byte[] crimePhoto1 = null;
+        byte[] crimePhoto2 = null;
+        byte[] crimePhoto3 = null;
+        byte[] crimePhoto4 = null;
+        byte[] crimeVideo = null;
         try {
             String caseNumber = request.getParameter("caseNumber");
             String caseName = request.getParameter("caseName");
@@ -33,16 +32,19 @@ public class AddCaseServlet extends HttpServlet {
             String witness = request.getParameter("witness");
 
             Part file1 = request.getPart("crimePhoto1");
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>.file names");
+            System.out.println(file1.getName());
+            System.out.println(file1.getSubmittedFileName());
             Part file2 = request.getPart("crimePhoto2");
             Part file3 = request.getPart("crimePhoto3");
             Part file4 = request.getPart("crimePhoto4");
             Part file5 = request.getPart("crimeVideo");
 
-            crimePhoto1 = file1.getInputStream();
-            crimePhoto2 = file2.getInputStream();
-            crimePhoto3 = file3.getInputStream();
-            crimePhoto4 = file4.getInputStream();
-            crimeVideo = file5.getInputStream();
+            crimePhoto1 = file1.getInputStream().readAllBytes();
+            crimePhoto2 = file2.getInputStream().readAllBytes();
+            crimePhoto3 = file3.getInputStream().readAllBytes();
+            crimePhoto4 = file4.getInputStream().readAllBytes();
+            crimeVideo = file5.getInputStream().readAllBytes();
 
 
             //make user object
@@ -61,16 +63,7 @@ public class AddCaseServlet extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (crimePhoto1 != null) crimePhoto1.close();
-            if (crimePhoto2 != null) crimePhoto2.close();
-            if (crimePhoto3 != null) crimePhoto3.close();
-            if (crimePhoto4 != null) crimePhoto4.close();
-            if (crimeVideo != null) crimeVideo.close();
-
-
         }
-
 
     }
 }

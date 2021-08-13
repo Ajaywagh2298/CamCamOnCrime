@@ -17,7 +17,8 @@ public class AddCriminalServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        InputStream photo = null;
+
+        byte[] photo = null;
 
         try {
             String name = request.getParameter("name");
@@ -30,7 +31,7 @@ public class AddCriminalServlet extends HttpServlet {
             String crimeDetails = request.getParameter("crime");
 
             Part file = request.getPart("photo");
-            photo = file.getInputStream();
+            photo = file.getInputStream().readAllBytes();
 
             //make user object
             Criminal criminalModel = new Criminal(name, address, contact, photo, birthDate, gender, adharId, identityMark,crimeDetails);
@@ -48,8 +49,6 @@ public class AddCriminalServlet extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (photo != null) photo.close();
         }
 
 

@@ -1,5 +1,4 @@
 package com.example.camoncrime;
-import java.io.InputStream;
 
 public class Crime {
     int crimeID;
@@ -12,17 +11,17 @@ public class Crime {
     String suspectivePersonName;
     String address;
     String witness;
-    InputStream crimePhoto1;
-    InputStream crimePhoto2;
-    InputStream crimePhoto3;
-    InputStream crimePhoto4;
-    InputStream crimeVideo;
+    byte[] crimePhoto1;
+    byte[] crimePhoto2;
+    byte[] crimePhoto3;
+    byte[] crimePhoto4;
+    byte[] crimeVideo;
 
    public Crime(){
 
     }
 
-    public  Crime(int crimeID,String caseNumber, String caseName, String crimeType,String date,String time,String crimeDetails,String suspectivePersonName,String address,String witness,InputStream crimePhoto1,InputStream crimePhoto2,InputStream crimePhoto3,InputStream crimePhoto4,InputStream crimeVideo){
+    public  Crime(int crimeID, String caseNumber, String caseName, String crimeType, String date, String time, String crimeDetails, String suspectivePersonName, String address, String witness, byte[] crimePhoto1, byte[] crimePhoto2, byte[] crimePhoto3, byte[] crimePhoto4, byte[] crimeVideo){
       this.crimeID = crimeID;
       this.caseNumber = caseNumber;
       this.caseName = caseName;
@@ -40,7 +39,7 @@ public class Crime {
       this.crimeVideo = crimeVideo;
     }
 
-    public  Crime(String caseNumber,String caseName,String crimeType,String date,String time,String crimeDetails,String suspectivePersonName,String address,String witness,InputStream crimePhoto1,InputStream crimePhoto2,InputStream crimePhoto3,InputStream crimePhoto4,InputStream crimeVideo){
+    public  Crime(String caseNumber, String caseName, String crimeType, String date, String time, String crimeDetails, String suspectivePersonName, String address, String witness, byte[] crimePhoto1, byte[] crimePhoto2, byte[] crimePhoto3, byte[] crimePhoto4, byte[] crimeVideo){
         this.caseNumber = caseNumber;
         this.caseName = caseName;
         this.crimeType = crimeType;
@@ -128,43 +127,43 @@ public class Crime {
         this.address = address;
     }
 
-    public InputStream getCrimePhoto1() {
+    public byte[] getCrimePhoto1() {
         return crimePhoto1;
     }
 
-    public void setCrimePhoto1(InputStream crimePhoto1) {
+    public void setCrimePhoto1(byte[] crimePhoto1) {
         this.crimePhoto1 = crimePhoto1;
     }
 
-    public InputStream getCrimePhoto2() {
+    public byte[] getCrimePhoto2() {
         return crimePhoto2;
     }
 
-    public void setCrimePhoto2(InputStream crimePhoto2) {
+    public void setCrimePhoto2(byte[] crimePhoto2) {
         this.crimePhoto2 = crimePhoto2;
     }
 
-    public InputStream getCrimePhoto3() {
+    public byte[] getCrimePhoto3() {
         return crimePhoto3;
     }
 
-    public void setCrimePhoto3(InputStream crimePhoto3) {
+    public void setCrimePhoto3(byte[] crimePhoto3) {
         this.crimePhoto3 = crimePhoto3;
     }
 
-    public InputStream getCrimePhoto4() {
+    public byte[] getCrimePhoto4() {
         return crimePhoto4;
     }
 
-    public void setCrimePhoto4(InputStream crimePhoto4) {
+    public void setCrimePhoto4(byte[] crimePhoto4) {
         this.crimePhoto4 = crimePhoto4;
     }
 
-    public InputStream getCrimeVideo() {
+    public byte[] getCrimeVideo() {
         return crimeVideo;
     }
 
-    public void setCrimeVideo(InputStream crimeVideo) {
+    public void setCrimeVideo(byte[] crimeVideo) {
         this.crimeVideo = crimeVideo;
     }
 

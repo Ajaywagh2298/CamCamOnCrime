@@ -1,13 +1,15 @@
 package com.example.camoncrime;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-
 public class CriminalDatabase {
     Connection con;
-
+    private static String basePath = "D:/CamOnCrime/src/main/webapp/data/criminal/";
+    private static String imagesPathSuffix = "/images";
     public CriminalDatabase(Connection con) {
         this.con = con;
     }
@@ -20,6 +22,7 @@ public class CriminalDatabase {
 
             updateCriminal(criminal, query);
             set = true;
+            FileUtils.copyMediaToFile(criminal.getPhoto(), getImageFileName(criminal.getName(), 1));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -38,12 +41,12 @@ public class CriminalDatabase {
         return true;
     }
 
-    private void updateCriminal(Criminal criminal, String query) throws SQLException {
+    private void updateCriminal(Criminal criminal, String query) throws SQLException, IOException {
         PreparedStatement pt = this.con.prepareStatement(query);
         pt.setString(1, criminal.getName());
         pt.setString(2, criminal.getAddress());
         pt.setString(3, criminal.getContact());
-        pt.setBlob(4, criminal.getPhoto());
+        pt.setBytes(4, criminal.getPhoto());
         pt.setString(5, criminal.getBirthDate());
         pt.setString(6, criminal.getGender());
         pt.setString(7, criminal.getAadharId());
@@ -51,5 +54,14 @@ public class CriminalDatabase {
         pt.setString(9, criminal.getCrimeDetails());
 
         pt.executeUpdate();
+        FileUtils.copyMediaToFile(criminal.getPhoto(), getImageFileName(criminal.getName(), 1));
     }
+
+    private static String createImagesPath(String caseName) {
+        return basePath + caseName + imagesPathSuffix;
+    }
+    private static File getImageFileName(String caseName, int i) {
+        return new File(createImagesPath(caseName) + "/image-" + i +".jpg");
+    }
+
 }

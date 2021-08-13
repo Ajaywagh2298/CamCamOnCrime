@@ -1,13 +1,11 @@
 package com.example.camoncrime;
 
-import java.io.InputStream;
-
 public class Criminal {
     int cId;
     String name;
     String address;
     String contact;
-    InputStream photo;
+    byte[] photo;
     String birthDate;
     String gender;
     String aadharId;
@@ -16,11 +14,7 @@ public class Criminal {
 
 
 
-    public Criminal() {
-
-    }
-
-    public Criminal(int cId, String name, String address, String contact, InputStream photo, String birthDate, String gender, String aadharId, String identityMark,String crimeDetails ) {
+    public Criminal(int cId, String name, String address, String contact, byte[] photo, String birthDate, String gender, String aadharId, String identityMark, String crimeDetails ) {
         this.cId = cId;
         this.name = name;
         this.address = address;
@@ -34,7 +28,7 @@ public class Criminal {
 
     }
 
-    public Criminal(String name, String address, String contact, InputStream photo, String birthDate, String gender, String aadharId, String identityMark,String crimeDetails) {
+    public Criminal(String name, String address, String contact, byte[] photo, String birthDate, String gender, String aadharId, String identityMark, String crimeDetails) {
         this.name = name;
         this.address = address;
         this.contact = contact;
@@ -79,11 +73,11 @@ public class Criminal {
         this.contact = contact;
     }
 
-    public InputStream getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(InputStream photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
 
