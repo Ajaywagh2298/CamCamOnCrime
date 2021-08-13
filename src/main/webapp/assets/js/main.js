@@ -4,12 +4,12 @@ let predictedAges = [];
 
 /****Loading the model ****/
 Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri("../assets/js/models"),
-    faceapi.nets.faceLandmark68Net.loadFromUri("../assets/js/models"),
-    faceapi.nets.faceRecognitionNet.loadFromUri("../assets/js/models"),
-    faceapi.nets.faceExpressionNet.loadFromUri("../assets/js/models"),
-    faceapi.nets.ageGenderNet.loadFromUri("../assets/js/models")
-]).then(startVideo);
+            faceapi.nets.tinyFaceDetector.loadFromUri("../assets/js/models"),
+            faceapi.nets.faceLandmark68Net.loadFromUri("../assets/js/models"),
+            faceapi.nets.faceRecognitionNet.loadFromUri("../assets/js/models"),
+            faceapi.nets.faceExpressionNet.loadFromUri("../assets/js/models"),
+            faceapi.nets.ageGenderNet.loadFromUri("../assets/js/models")
+        ]).then(startVideo);
 
 function startVideo() {
     navigator.getUserMedia(
