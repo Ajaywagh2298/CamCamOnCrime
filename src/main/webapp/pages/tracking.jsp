@@ -1,50 +1,47 @@
 <jsp:include page="header.jsp"/>
 <style>
-  /* CSS comes here */
-  #video {
+  canvas {
+    position: absolute;
+  }
+  .container {
+    display: flex;
     width: 100%;
-    height: 600px;
-
+    justify-content: center;
+    align-items: center;
   }
-
-  #photo {
-    border: 1px solid black;
-    width: 320px;
-    height: 240px;
+  .result-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
-
-  #canvas {
-    display: none;
+  .result-container > div {
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    margin: 5px 0;
+    color: white;
+    text-transform: capitalize;
   }
-
-  .camera {
-    width: 340px;
-    display: inline-block;
+  #age {
+    background: #1e94be;
   }
-
-  .output {
-    width: 340px;
-    display: inline-block;
+  #emotion {
+    background: #8a1025;
   }
-
-  /* #startbutton {
-    display: block;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    bottom: 36px;
-    padding: 5px;
-    background-color: #6a67ce;
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    font-size: 14px;
-    color: rgba(255, 255, 255, 1.0);
-    cursor: pointer;
-  } */
-
-  .contentarea {
-    font-size: 16px;
-    font-family: Arial;
-    text-align: center;
+  #gender {
+    background: #62d8a5;
+  }
+  video {
+    width: 100%;
+  }
+  header {
+    background: #42a5f5;
+    color: white;
+    width: 100%;
+    font-size: 2rem;
+    padding: 1rem;
+    font-size: 2rem;
   }
 </style>
 <div class="content">
@@ -56,111 +53,19 @@
           <h5 class="card-title"><i class="fas fa-webcam"></i>&nbsp; Face Recognition</h5>
         </div>
         <div class="card-body ">
-          <div class="card">
-            <div class="card-group">
-              <video id="video" class="col-md-12">Video stream not available.</video>
-            </div>
-            <div><button id="startbutton" class="btn btn-info btn-block">Take photo</button></div>
-            <canvas id="canvas"></canvas>
-            <div style="display: none;" class="output">
-              <img id="photo" alt="The screen capture will appear in this box.">
-            </div>
+          <div class="container">
+            <video id="video" height="500" width="500" autoplay muted></video>
           </div>
-          <!--  <canvas id="canvas"></canvas>
-            <div class="output">
-              <img id="photo" alt="The screen capture will appear in this box.">
-            </div>
-          </div> -->
-
-          <script>
-            /* JS comes here */
-            (function() {
-
-              var width = 320; // We will scale the photo width to this
-              var height = 0; // This will be computed based on the input stream
-
-              var streaming = false;
-
-              var video = null;
-              var canvas = null;
-              var photo = null;
-              var startbutton = null;
-
-              function startup() {
-                video = document.getElementById('video');
-                canvas = document.getElementById('canvas');
-                photo = document.getElementById('photo');
-                startbutton = document.getElementById('startbutton');
-
-                navigator.mediaDevices.getUserMedia({
-                  video: true,
-                  audio: false
-                })
-                        .then(function(stream) {
-                          video.srcObject = stream;
-                          video.play();
-                        })
-                        .catch(function(err) {
-                          console.log("An error occurred: " + err);
-                        });
-
-                video.addEventListener('canplay', function(ev) {
-                  if (!streaming) {
-                    height = video.videoHeight / (video.videoWidth / width);
-
-                    if (isNaN(height)) {
-                      height = width / (4 / 3);
-                    }
-
-                    video.setAttribute('width', width);
-                    video.setAttribute('height', height);
-                    canvas.setAttribute('width', width);
-                    canvas.setAttribute('height', height);
-                    streaming = true;
-                  }
-                }, false);
-
-                startbutton.addEventListener('click', function(ev) {
-                  takepicture();
-                  ev.preventDefault();
-                }, false);
-
-                clearphoto();
-              }
-
-
-              function clearphoto() {
-                var context = canvas.getContext('2d');
-                context.fillStyle = "#AAA";
-                context.fillRect(0, 0, canvas.width, canvas.height);
-
-                var data = canvas.toDataURL('image/png');
-                photo.setAttribute('src', data);
-              }
-
-              function takepicture() {
-                var context = canvas.getContext('2d');
-                if (width && height) {
-                  canvas.width = width;
-                  canvas.height = height;
-                  context.drawImage(video, 0, 0, width, height);
-
-                  var data = canvas.toDataURL('image/png');
-                  photo.setAttribute('src', data);
-                } else {
-                  clearphoto();
-                }
-              }
-
-              window.addEventListener('load', startup, false);
-            })()
-
-          </script>
+          <div class="result-container">
+            <div id="gender">Gender</div>
+            <div id="age">Age</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 
 <jsp:include page="footer.jsp"/>
