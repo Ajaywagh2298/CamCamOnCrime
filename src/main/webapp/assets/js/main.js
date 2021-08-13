@@ -4,11 +4,11 @@ let predictedAges = [];
 
 /****Loading the model ****/
 Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri("models"),
-    faceapi.nets.faceLandmark68Net.loadFromUri("models"),
-    faceapi.nets.faceRecognitionNet.loadFromUri("models"),
-    faceapi.nets.faceExpressionNet.loadFromUri("models"),
-    faceapi.nets.ageGenderNet.loadFromUri("models")
+    faceapi.nets.tinyFaceDetector.loadFromUri("../assets/js/models"),
+    faceapi.nets.faceLandmark68Net.loadFromUri("../assets/js/models"),
+    faceapi.nets.faceRecognitionNet.loadFromUri("../assets/js/models"),
+    faceapi.nets.faceExpressionNet.loadFromUri("../assets/js/models"),
+    faceapi.nets.ageGenderNet.loadFromUri("../assets/js/models")
 ]).then(startVideo);
 
 function startVideo() {
@@ -31,7 +31,7 @@ function screenResize(isScreenSmall) {
 screenResize(isScreenSmall);
 isScreenSmall.addListener(screenResize);
 
-/****Event Listeiner for the video****/
+/****Event Listener for the video****/
 video.addEventListener("playing", () => {
     const canvas = faceapi.createCanvasFromMedia(video);
     let container = document.querySelector(".container");
@@ -44,13 +44,13 @@ video.addEventListener("playing", () => {
         const detections = await faceapi
             .detectSingleFace(video, new faceapi.TinyFaceDetectorOptions())
             .withFaceLandmarks()
-            .withFaceExpressions()
-            .withAgeAndGender();
+            .withAgeAndGender()
+            .withFaceExpressions();
 
         const resizedDetections = faceapi.resizeResults(detections, displaySize);
         canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 
-        /****Drawing the detection box and landmarkes on canvas****/
+        /****Drawing the detection box and landmarks on canvas****/
         faceapi.draw.drawDetections(canvas, resizedDetections);
         faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
 

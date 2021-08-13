@@ -33,8 +33,8 @@
 <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
-<script src="src/main/webapp/assets/js/face-api.min.js"></script>
-<script src="src/main/webapp/assets/js/main.js"></script>
+<script src="../assets/js/face-api.min.js"></script>
+<script src="../assets/js/main.js"></script>
 </body>
 
 </html>
